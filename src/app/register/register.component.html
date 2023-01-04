@@ -1,0 +1,50 @@
+<form>
+    <div class="container">
+        <h1> Parent Registration Form</h1>
+        <hr/>
+        <label> Firstname: </label> 
+            <input type="text" name="firstname" placeholder= "Firstname" size="15" required /> 
+        <label> Middlename: </label> 
+            <input type="text" name="middlename" placeholder="Middlename" size="15" required /> 
+        <label> Lastname: </label>  
+            <input type="text" name="lastname" placeholder="Lastname" size="15"required />
+        <label> Email: </label>
+            <input type="text" name="Email" placeholder="Email" size="15"required />
+        <label> Password: </label>
+            <input type="text" name="Password" placeholder="Password" size="15"required />
+
+        <div>
+            <label> 
+                State :
+            </label> <br/>
+            <select>
+                <option value="State">State</option>
+                <option value="Vijayawada">Andhra Pradesh</option>
+                <option value="Hyderabad">Telangana</option>
+                <option value="Tamilnadu">Tamilnadu</option>
+            </select>
+        </div>
+    
+        <div>
+            <label>
+                Gender : 
+            </label> <br/>
+            <input type="radio" value="Male" name="gender" checked > Male 
+            <input type="radio" value="Female" name="gender"> Female 
+            <input type="radio" value="Other" name="gender"> Other
+        </div>
+        <div>
+            <label> 
+                Phone :
+            </label>
+            <input type="text" name="country code" placeholder="Country Code"  value="+91" size="2"/> 
+            <input type="text" name="phone" placeholder="phone no." size="10" required /> 
+                Current Address :
+            <textarea cols="80" rows="5" placeholder="Current Address" value="address" required></textarea>
+        </div>
+
+        <div>
+            <button type="submit">Register</button>
+        </div>
+    </div>
+</form>
