@@ -2,6 +2,8 @@
     <div class="container">
         <h1> Parent Registration Form</h1>
         <hr/>
+        <label> Username: </label> 
+            <input type="text" name="username" placeholder= "Username" size="15" required /> 
         <label> Firstname: </label> 
             <input type="text" name="firstname" placeholder= "Firstname" size="15" required /> 
         <label> Middlename: </label> 
@@ -13,7 +15,7 @@
         <label> Password: </label>
             <input type="text" name="Password" placeholder="Password" size="15"required />
 
-        <div>
+        <!-- <div>
             <label> 
                 State :
             </label> <br/>
@@ -23,8 +25,8 @@
                 <option value="Hyderabad">Telangana</option>
                 <option value="Tamilnadu">Tamilnadu</option>
             </select>
-        </div>
-    
+        </div> -->
+
         <div>
             <label>
                 Gender : 
@@ -33,11 +35,16 @@
             <input type="radio" value="Female" name="gender"> Female 
             <input type="radio" value="Other" name="gender"> Other
         </div>
+
+        <div>
+            <label> Baby DOB : </label> 
+            <input type="date" name="Password" placeholder="Password" size="15" required />
+        </div>
+
         <div>
             <label> 
                 Phone :
             </label>
-            <input type="text" name="country code" placeholder="Country Code"  value="+91" size="2"/> 
             <input type="text" name="phone" placeholder="phone no." size="10" required /> 
                 Current Address :
             <textarea cols="80" rows="5" placeholder="Current Address" value="address" required></textarea>
