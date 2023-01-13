@@ -1,3 +1,4 @@
+import { GlobalComponent } from './../global.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contactus.component.css']
 })
 export class ContactusComponent implements OnInit {
-
+  isLoggedIn = GlobalComponent.isLoggedIn;
   constructor() { }
 
   ngOnInit(): void {

@@ -3,17 +3,18 @@
         <h1> Parent Registration Form</h1>
         <hr/>
         <label> Username: </label> 
-            <input type="text" name="username" placeholder= "Username" size="15" required /> 
+            <input type="text" name="username" placeholder= "Username" [(ngModel)] = "username" size="15" required /> 
+        <label> Password: </label>
+            <input type="text" name="Password" placeholder="Password" [(ngModel)] = "password" size="15" required />
         <label> Firstname: </label> 
             <input type="text" name="firstname" placeholder= "Firstname" size="15" required /> 
         <label> Middlename: </label> 
             <input type="text" name="middlename" placeholder="Middlename" size="15" required /> 
         <label> Lastname: </label>  
-            <input type="text" name="lastname" placeholder="Lastname" size="15"required />
+            <input type="text" name="lastname" placeholder="Lastname" size="15" required />
         <label> Email: </label>
-            <input type="text" name="Email" placeholder="Email" size="15"required />
-        <label> Password: </label>
-            <input type="text" name="Password" placeholder="Password" size="15"required />
+            <input type="text" name="Email" placeholder="Email" size="15" required />
+        
 
         <!-- <div>
             <label> 
@@ -38,7 +39,7 @@
 
         <div>
             <label> Baby DOB : </label> 
-            <input type="date" name="Password" placeholder="Password" size="15" required />
+            <input type="date" name="dateofbirth" size="35"  [(ngModel)] = "password" required />
         </div>
 
         <div>
@@ -51,7 +52,7 @@
         </div>
 
         <div>
-            <button type="submit">Register</button>
+            <button type="submit" (click)="register()">Register</button>
         </div>
     </div>
 </form>
