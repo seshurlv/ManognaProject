@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-nav-menu',
@@ -15,7 +16,10 @@ export class NavMenuComponent {
       map(result => result.matches),
       shareReplay()
     );
+  
+  constructor(private breakpointObserver: BreakpointObserver,private app:AppComponent) {}
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
-
+  onStatusChange(e:any) {
+    this.app.toggleChecked.next(e.checked);
+  }
 }

@@ -1,7 +1,14 @@
-#home{    
+#home {
     padding: 50px 0px 0px 230px;
 }
 
 table {
     width: 100%;
+}
+
+table,
+.border {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
 }

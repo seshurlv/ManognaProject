@@ -1,7 +1,8 @@
 import { GlobalComponent } from './../global.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import data from '../common/users.json';
+import { AppComponent } from '../app.component';
+import { HttpService } from '../http-service.service';
 
 @Component({
   selector: 'app-login',
@@ -10,32 +11,33 @@ import data from '../common/users.json';
 })
 export class LoginComponent implements OnInit {
   isLoggedIn = GlobalComponent.isLoggedIn;
-  
+  private jsonURL = '../../assets/users.json';
   username: string = '';
   password: string = '';
-
+  flag: boolean = false;
   userData: any = {};
 
-  constructor(private route: Router) { }
-
-  ngOnInit(): void {
-    this.userData = data;
-    console.log(this.userData)
+  constructor(private route: Router, private app: AppComponent, private httpService: HttpService) {
+    this.httpService.getJSON(this.jsonURL).subscribe(data => {
+      this.userData = data;
+      console.log(this.userData);
+    });
   }
 
-  login() {
-    console.log('UserName: ', this.username);
-    console.log('Password: ', this.password);
+  ngOnInit(): void { }
 
+  login() {
     this.userData.forEach((element: any) => {
       if (element.username === this.username && element.password === this.password) {
+        this.app.loggedInUserDetails.next(element);
+        this.flag = true;
         this.route.navigate(['home']);
-      } else {
-        this.username = '';
-        this.password = '';
       }
     });
-
+    if (!this.flag) {
+      this.username = '';
+      this.password = '';
+    }
   }
 
 }

@@ -16,7 +16,11 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 import { ToastrModule } from 'ngx-toastr';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { HttpClientModule } from '@angular/common/http';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -34,10 +38,14 @@ import { ToastrModule } from 'ngx-toastr';
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatRadioModule,
     MatSidenavModule,
     MatIconModule,
+    HttpClientModule,
     MatListModule,
     FormsModule,
+    MatTableModule,
+    MatSlideToggleModule,
     ToastrModule.forRoot()
   ],
   providers: [],

@@ -1,53 +1,92 @@
 <div>
-    <app-nav-menu></app-nav-menu>
-    <div id="home">
-        <table style="width: 100%;">
-            <tr>
-                <td style="width: 50%;">Seshu</td>
-                <td style="width: 50%;">Kumar</td>
-            </tr>
-            <tr>
-                <td style="width: 50%;">Hyderabad</td>
-                <td style="width: 50%;">9959933822</td>
-            </tr>
-            <tr>
-                <td style="width: 50%;">user1@abc.com</td>
-                <td style="width: 50%;">Male</td>
-            </tr>
-        </table>
-        <table mat-table dataSource="dataSource" class="mat-elevation-z8">
+  <app-nav-menu></app-nav-menu>
+  <div id="home">
+    <!-- <table style="width: 99%;">
+      <tr>
+        <td rowspan="0"><img src="../../assets/male dummy image.jpg" alt="maleDummyImage"></td>
+        <td class="border" style="width: 50%;">Seshu</td>
+        <td class="border" style="width: 50%;">Kumar</td>
+      </tr>
+      <tr>
+        <td class="border" style="width: 50%;">Hyderabad</td>
+        <td class="border" style="width: 50%;">9959933822</td>
+      </tr>
+      <tr>
+        <td class="border" style="width: 50%;">user1@abc.com</td>
+        <td class="border" style="width: 50%;">Male</td>
+      </tr>
+    </table> -->
+    <table style="width: 99%;">
+      <tr>
+        <td rowspan="0">
+          <img *ngIf="loggedInUserDetails.gender.toLowerCase() === 'male'" src="../../assets/male dummy image.jpg" alt="maleDummyImage">
+          <img *ngIf="loggedInUserDetails.gender.toLowerCase() === 'female'" src="../../assets/female dummy image.jpg" alt="femaleDummyImage">
+          <!-- <img *ngIf="loggedInUserDetails.gender.toLowerCase() === 'other'" src="../../assets/female dummy image.jpg" alt="femaleDummyImage"> -->
+        </td>
+        <td class="border" style="width: 50%;">{{loggedInUserDetails.firstname}}</td>
+        <td class="border" style="width: 50%;">{{loggedInUserDetails.lastname}}</td>
+      </tr>
+      <tr>
+        <td class="border" style="width: 50%;">{{loggedInUserDetails.address}}</td>
+        <td class="border" style="width: 50%;">{{loggedInUserDetails.mobile}}</td>
+      </tr>
+      <tr>
+        <td class="border" style="width: 50%;">{{loggedInUserDetails.email}}</td>
+        <td class="border" style="width: 50%;">{{loggedInUserDetails.gender}}</td>
+      </tr>
+    </table>
+    <br>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-          
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef> No. </th>
-              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-            </ng-container>
-          
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-          
-            <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-              <th mat-header-cell *matHeaderCellDef> Weight </th>
-              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-            </ng-container>
-          
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-              <th mat-header-cell *matHeaderCellDef> Symbol </th>
-              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-            </ng-container>
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-          
-          
-    </div>
+      <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> S.No </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Gender Column -->
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef> Gender </th>
+        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <!-- Mobile Column -->
+      <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef> Mobile </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+      </ng-container>
+
+      <!-- DOB Column -->
+      <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef> DOB </th>
+        <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sendNotification">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef> <button class="btn-primary" (click)="sendNotification()">Send Notification</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+  </div>
 </div>

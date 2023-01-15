@@ -3,14 +3,14 @@
         "id": 1,
         "username": "user1",
         "password": "pwd",
-        "firstname": "",
+        "firstname": "John",
         "middlename": "",
-        "lastname": "",
-        "gender": "Female",
+        "lastname": "Doe",
+        "gender": "Male",
         "email": "babyinlapsuser1@gmail.com",
-        "mobile": "",
+        "mobile": 9976538645,
         "address": "Address 1",
-        "babyDOB": ""
+        "babyDOB": "22-01-1996"
     },
     {
         "id": 2,
@@ -21,21 +21,21 @@
         "lastname": "",
         "gender": "Female",
         "email": "babyinlapsuser2@gmail.com",
-        "mobile": "",
-        "address": "",
-        "babyDOB": ""
+        "mobile": 6637830946,
+        "address": "Address 2",
+        "babyDOB": "02-10-1993"
     },
     {
         "id": 3,
         "username": "user3",
         "password": "pwd",
-        "firstname": "",
+        "firstname": "Joh",
         "middlename": "",
-        "lastname": "",
+        "lastname": "User3",
         "gender": "Male",
         "email": "babyinlapsuser3@gmail.com",
-        "mobile": "",
-        "address": "",
-        "babyDOB": ""
+        "mobile": 8374539027,
+        "address": "Address 3",
+        "babyDOB": "12-11-1999"
     }
 ]

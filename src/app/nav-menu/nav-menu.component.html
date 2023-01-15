@@ -21,6 +21,7 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Baby In Laps</span>
+      <mat-slide-toggle (change)="onStatusChange($event)" style="margin-left: 80%;"><b>Slide me!</b></mat-slide-toggle>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
