@@ -15,7 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ContactusComponent } from './contactus/contactus.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { ToastrModule } from 'ngx-toastr';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
@@ -43,6 +43,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatIconModule,
     HttpClientModule,
     MatListModule,
+    ReactiveFormsModule,
     FormsModule,
     MatTableModule,
     MatSlideToggleModule,

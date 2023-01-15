@@ -1,24 +1,131 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-
-</form>
-
-<form>
+<form [formGroup]="registerForm" (ngSubmit)="register()">
     <div class="container">
         <h1> Parent Registration Form</h1>
-        <hr/>
-        <label> Username: </label> 
-            <input type="text" name="username" placeholder= "Username" [(ngModel)] = "username" [ngModelOptions]="{standalone: true}" size="15" required /> 
+        <hr />
+        <label> Username: </label>
+        <input type="text" placeholder="Enter a UserName" formControlName="username">
+        <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+            <div class="required" *ngIf="registerForm.get('username')?.errors?.['required']">
+                <i class="fa fa-exclamation-circle"></i> &nbsp;
+                <span>Username is required.</span>
+            </div>
+        </div>
         <label> Password: </label>
-            <input type="password" name="Password" placeholder="Password" [(ngModel)] = "password" [ngModelOptions]="{standalone: true}" size="15" required />
-        <label> Firstname: </label> 
-            <input type="text" name="firstname" placeholder= "Firstname" [(ngModel)] = "firstname" [ngModelOptions]="{standalone: true}" size="15" required /> 
-        <label> Middlename: </label> 
-            <input type="text" name="middlename" placeholder="Middlename" [(ngModel)] = "middlename" [ngModelOptions]="{standalone: true}" size="15" required /> 
-        <label> Lastname: </label>  
-            <input type="text" name="lastname" placeholder="Lastname" [(ngModel)] = "lastname" [ngModelOptions]="{standalone: true}" size="15" required />
+        <input type="password" placeholder="Password" formControlName="password" />
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+            <div class="required" *ngIf="registerForm.get('password')?.errors?.['required']">
+                <i class="fa fa-exclamation-circle"></i> &nbsp;
+                <span>Password is required.</span>
+            </div>
+        </div>
+        <label> First Name: </label>
+        <input type="text" placeholder="Enter Firstname" formControlName="firstname" />
+        <div *ngIf="registerForm.get('firstname')?.invalid && registerForm.get('firstname')?.touched">
+            <div class="required" *ngIf="registerForm.get('firstname')?.errors?.['required']">
+                <i class="fa fa-exclamation-circle"></i> &nbsp;
+                <span>First Name is required.</span>
+            </div>
+        </div>
+        <label> Middle Name: </label>
+        <input type="text" placeholder="Middlename" formControlName="middlename" />
+        <label> Lastname: </label>
+        <input type="text" placeholder="Lastname" formControlName="lastname" />
+        <div *ngIf="registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched">
+            <div class="required" *ngIf="registerForm.get('lastname')?.errors?.['required']">
+                <i class="fa fa-exclamation-circle"></i> &nbsp;
+                <span>Last Name is required.</span>
+            </div>
+        </div>
         <label> Email: </label>
-            <input type="text" name="Email" placeholder="Email" [(ngModel)] = "email" [ngModelOptions]="{standalone: true}" size="15" required />
-        
+        <input type="text" placeholder="Email" formControlName="emailid" />
+        <div class="required" *ngIf="registerForm.get('emailid')?.invalid && registerForm.get('emailid')?.touched">
+            <i class="fa fa-exclamation-circle"></i> &nbsp;
+            <span>Please enter a valid email address</span>
+        </div>
+        <label>
+            Gender :
+        </label> <br />
+        <mat-radio-group aria-label="gender" class="radio" formControlName="gender">
+            <mat-radio-button value="Male">Male</mat-radio-button>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <label> Baby DOB : </label>
+        <input type="date" formControlName="dob" />
+        <br>
+        <br>
+        <label>
+            Phone :
+        </label>
+        <input type="tel" placeholder="phone no." formControlName="phone" maxlength="10" size="10" />
+        <div *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched">
+            <div class="requiredForPhoneNumber" *ngIf="registerForm.get('phone')?.errors?.['required']">
+                <i class="fa fa-exclamation-circle"></i> &nbsp;
+                <span>Phone number is required.</span>
+            </div>
+            <div class="requiredForPhoneNumber" style="margin-bottom: -50px;"
+                *ngIf="registerForm.get('phone')?.errors?.['inValidPattern']">
+                <i class="fa fa-exclamation-circle"></i> &nbsp;
+                <span>Invalid Phone Number.</span>
+            </div>
+        </div>
+        <br>
+        <br>
+        Current Address :
+        <textarea cols="80" rows="5" placeholder="Current Address" formControlName="address"></textarea>
+        <div *ngIf="registerForm.get('address')?.invalid && registerForm.get('address')?.touched">
+            <div class="required" *ngIf="registerForm.get('address')?.errors?.['required']">
+                <i class="fa fa-exclamation-circle"></i> &nbsp;
+                <span>Address is required.</span>
+            </div>
+        </div>
+        <button class="registerbtn" [disabled]="registerForm.invalid" type="submit">Register</button>
+    </div>
+</form>
+
+<!-- <form>
+    <div class="container">
+        <h1> Parent Registration Form</h1>
+        <hr />
+        <label> Username: </label>
+        <input id="delegateId" type="text" placeholder="Enter a CCO ID" class="form-control reactiveInputStyle"
+            formControlName="inputValue" [readonly]="isReadOnly(i)"><input type="text" name="username"
+            placeholder="Username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" size="15" required />
+        <label> Password: </label>
+        <input type="password" name="Password" placeholder="Password" [(ngModel)]="password"
+            [ngModelOptions]="{standalone: true}" size="15" required />
+        <label> Firstname: </label>
+        <input type="text" name="firstname" placeholder="Firstname" [(ngModel)]="firstname"
+            [ngModelOptions]="{standalone: true}" size="15" required />
+        <label> Middlename: </label>
+        <input type="text" name="middlename" placeholder="Middlename" [(ngModel)]="middlename"
+            [ngModelOptions]="{standalone: true}" size="15" required />
+        <label> Lastname: </label>
+        <input type="text" name="lastname" placeholder="Lastname" [(ngModel)]="lastname"
+            [ngModelOptions]="{standalone: true}" size="15" required />
+        <label> Email: </label>
+        <input type="text" name="Email" placeholder="Email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"
+            size="15" required />
+<div>
+            <label> Baby DOB : </label>
+            <input type="date" name="dateofbirth" size="35" [ngModelOptions]="{standalone: true}" [(ngModel)]="dob"
+                required />
+        </div>
+
+        <div>
+            <label>
+                Phone :
+            </label>
+            <input type="tel" name="phone" placeholder="phone no." [(ngModel)]="phone"
+                [ngModelOptions]="{standalone: true}" maxlength="10" size="10" required />
+            Current Address :
+            <textarea cols="80" rows="5" placeholder="Current Address" name="address" [(ngModel)]="address"
+                [ngModelOptions]="{standalone: true}" required></textarea>
+        </div>
+
+        <div>
+            <button type="submit" (click)="register()">Register</button>
+        </div>
 
         <!-- <div>
             <label> 
@@ -30,37 +137,41 @@
                 <option value="Hyderabad">Telangana</option>
                 <option value="Tamilnadu">Tamilnadu</option>
             </select>
-        </div> -->
+        </div> 
 
         <div>
             <label>
-                Gender : 
-            </label> <br/>
-            <mat-radio-group aria-label="gender" class="radio" [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">
+                Gender :
+            </label> <br />
+            <mat-radio-group aria-label="gender" class="radio" [(ngModel)]="gender"
+                [ngModelOptions]="{standalone: true}">
                 <mat-radio-button value="Male" checked="true">Male</mat-radio-button>
                 <mat-radio-button value="Female">Female</mat-radio-button>
-              </mat-radio-group>
+            </mat-radio-group>
             <!-- <input type="radio" value="Male" name="gender" checked > Male 
             <input type="radio" value="Female" name="gender"> Female 
-            <input type="radio" value="Other" name="gender"> Other -->
+            <input type="radio" value="Other" name="gender"> Other 
         </div>
 
         <div>
-            <label> Baby DOB : </label> 
-            <input type="date" name="dateofbirth" size="35" [ngModelOptions]="{standalone: true}" [(ngModel)] = "dob" required />
+            <label> Baby DOB : </label>
+            <input type="date" name="dateofbirth" size="35" [ngModelOptions]="{standalone: true}" [(ngModel)]="dob"
+                required />
         </div>
 
         <div>
-            <label> 
+            <label>
                 Phone :
             </label>
-            <input type="tel" name="phone" placeholder="phone no." [(ngModel)] = "phone" [ngModelOptions]="{standalone: true}" maxlength="10" size="10" required /> 
-                Current Address :
-            <textarea cols="80" rows="5" placeholder="Current Address" name="address" [(ngModel)] = "address" [ngModelOptions]="{standalone: true}" required></textarea>
+            <input type="tel" name="phone" placeholder="phone no." [(ngModel)]="phone"
+                [ngModelOptions]="{standalone: true}" maxlength="10" size="10" required />
+            Current Address :
+            <textarea cols="80" rows="5" placeholder="Current Address" name="address" [(ngModel)]="address"
+                [ngModelOptions]="{standalone: true}" required></textarea>
         </div>
 
         <div>
             <button type="submit" (click)="register()">Register</button>
         </div>
     </div>
-</form>
+</form> -->
