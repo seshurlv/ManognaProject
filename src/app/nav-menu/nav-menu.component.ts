@@ -19,7 +19,4 @@ export class NavMenuComponent {
   
   constructor(private breakpointObserver: BreakpointObserver,private app:AppComponent) {}
 
-  onStatusChange(e:any) {
-    this.app.toggleChecked.next(e.checked);
-  }
 }

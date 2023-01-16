@@ -3,12 +3,23 @@
 }
 
 table {
-    width: 100%;
+    min-width: 99%;
+    
 }
 
-table,
-.border {
-    border: 1px solid black;
-    border-collapse: collapse;
+table, .border {
+    border-collapse: separate;
     text-align: center;
+    border-width: 1px;
+    border-color: burlywood;
+    border-style: solid;
+}
+
+img{
+    height: 150px;
+}
+
+.notificationStyle{
+    float: right;
+    margin-right: 25px;
 }

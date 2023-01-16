@@ -1,21 +1,6 @@
 <div>
   <app-nav-menu></app-nav-menu>
-  <div id="home">
-    <!-- <table style="width: 99%;">
-      <tr>
-        <td rowspan="0"><img src="../../assets/male dummy image.jpg" alt="maleDummyImage"></td>
-        <td class="border" style="width: 50%;">Seshu</td>
-        <td class="border" style="width: 50%;">Kumar</td>
-      </tr>
-      <tr>
-        <td class="border" style="width: 50%;">Hyderabad</td>
-        <td class="border" style="width: 50%;">9959933822</td>
-      </tr>
-      <tr>
-        <td class="border" style="width: 50%;">user1@abc.com</td>
-        <td class="border" style="width: 50%;">Male</td>
-      </tr>
-    </table> -->
+  <div id="home">    
     <table style="width: 99%;">
       <tr>
         <td rowspan="0">
@@ -35,12 +20,11 @@
         <td class="border" style="width: 50%;">{{loggedInUserDetails.gender}}</td>
       </tr>
     </table>
-    <br>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-      <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-
+    <br/><br/>  
+      <mat-slide-toggle (change)="onStatusChange($event)" class="notificationStyle"><b>Enable Auto Notification</b></mat-slide-toggle>  
+    <br/><br/>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 99%;">
+      
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> S.No </th>
@@ -86,7 +70,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-
 
   </div>
 </div>

@@ -2,12 +2,16 @@ import { GlobalComponent } from './../global.component';
 import { Component, OnInit } from '@angular/core';
 import data from '../../assets/users.json';
 import { AppComponent } from '../app.component';
+//import '../../assets/js/configuresmtp.js';
+
+declare let Email: any;
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
   isLoggedIn = GlobalComponent.isLoggedIn;
   displayedColumns: string[] = ['id', 'name', 'gender', 'email', 'mobile', 'dob', 'sendNotification'];
@@ -18,6 +22,7 @@ export class HomeComponent implements OnInit {
   constructor(protected app: AppComponent) { }
 
   ngOnInit(): void {
+    this.loadJsFile("../../assets/js/configuresmtp.js");
     this.userData = data;
     this.app.loggedInUserDetails.subscribe(data => {
       this.loggedInUserDetails = data;
@@ -43,7 +48,7 @@ export class HomeComponent implements OnInit {
       if (flag) {
         interval = setInterval(() => {
           this.sendNotification();
-        }, 15000);
+        }, 30000);
       } else {
         clearInterval(interval);
       }
@@ -51,8 +56,30 @@ export class HomeComponent implements OnInit {
 
   }
 
+  public loadJsFile(url: string) {  
+    let node = document.createElement('script');  
+    node.src = url;  
+    node.type = 'text/javascript';  
+    document.getElementsByTagName('head')[0].appendChild(node);  
+  }
+
+  onStatusChange(e:any) {
+    this.app.toggleChecked.next(e.checked);
+  }
+
   sendNotification() {
-    alert('Sending Notification');
+    console.log(typeof Email);
+    Email.send({
+      Host : 'smtp.elasticemail.com',
+      Username : "babyinlaps@gmail.com",
+      Password : "8A3E6A7BFA23B59C3E419C4F8A76D635AF3B",
+      To : "babyinlapsuser1@gmail.com",
+      From : "babyinlaps@gmail.com",
+      Subject : "Vaccine Notification",
+      Body : `
+      <b> This is your notification for the timely vaccination. Please visit the center in 48hours to avail the vaccination</b>
+      `
+    });
   }
 
 }
